@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+    <tr *ngFor="let user of users$ | async">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>Edit</td>
+      <td>Delete</td>
     </tr>
   </tbody>
 </table> 

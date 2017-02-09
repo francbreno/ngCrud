@@ -1,5 +1,6 @@
 import { HasDirtyChecking } from '../prevent-unsaved-changes-guard.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +11,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class UserFormComponent implements OnInit, HasDirtyChecking {
   form: FormGroup;
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.form = this.builder.group({
@@ -29,7 +30,11 @@ export class UserFormComponent implements OnInit, HasDirtyChecking {
   }
 
   addUser() {
-    console.log(this.form.controls);
+    if (this.form.valid) {
+      console.log(this.form.controls);
+      this.form.markAsPristine(true);
+      this.router.navigate(['users']);
+    }
   }
 
   hasUnsavedChanges(): boolean {

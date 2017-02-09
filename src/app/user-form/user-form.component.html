@@ -1,0 +1,60 @@
+<form [formGroup]="form" novalidate (submit)="addUser()" class="form-horizontal">
+  <fieldset formGroupName="user">
+    <legend>User</legend>
+    <div class="form-group" 
+      [class.has-error]="form.controls.user.controls.name.touched && form.controls.user.controls.name.invalid">
+      <label for="inputName" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input formControlName="name" type="text" class="form-control" id="inputName" placeholder="Name">
+      </div>
+    </div>
+    <div class="form-group" 
+      [class.has-error]="form.controls.user.controls.email.touched && form.controls.user.controls.email.invalid">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input formControlName="email" type="text" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+      <div class="col-lg-10">
+        <input formControlName="phone" type="text" class="form-control" id="inputPhone" placeholder="Phone">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset formGroupName="address">
+    <legend>Address</legend>
+    <div class="form-group">
+      <label for="inputStreet" class="col-lg-2 control-label">Street</label>
+      <div class="col-lg-10">
+        <input formControlName="street" type="text" class="form-control" id="inputStreet" placeholder="Street">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputSuite" class="col-lg-2 control-label">Suite</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputSuite" placeholder="Suite">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputCity" class="col-lg-2 control-label">City</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputCity" placeholder="City">
+      </div>
+    </div>
+    <div class="form-group" 
+      [class.has-error]="form.controls.address.controls.zipcode.touched && form.controls.address.controls.zipcode.invalid">
+      <label for="inputZipCode" class="col-lg-2 control-label">ZipCode</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputZipCode" placeholder="ZipCode">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>

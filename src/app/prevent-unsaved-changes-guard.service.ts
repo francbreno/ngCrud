@@ -1,12 +1,14 @@
-import { UserFormComponent } from './user-form/user-form.component';
 import { CanDeactivate } from '@angular/router';
 
+export interface HasDirtyChecking {
+  hasUnsavedChanges(): boolean;
+}
 
-export class PreventUnsavedChangesGuardService implements CanDeactivate<UserFormComponent> {
+export class PreventUnsavedChangesGuardService implements CanDeactivate<HasDirtyChecking> {
 
-  canDeactivate(component: UserFormComponent): boolean {
-    if (component.form.dirty)
-      return confirm('Existem dados não salvos. Deseja mesmo sair desta tela?');
+  canDeactivate(component: HasDirtyChecking): boolean {
+    if (component.hasUnsavedChanges())
+      return confirm("There's no saved data for this form. Are you sure want to exit?");
 
     return true;
   }

@@ -1,3 +1,4 @@
+import { HasDirtyChecking } from '../prevent-unsaved-changes-guard.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
@@ -6,7 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, HasDirtyChecking {
   form: FormGroup;
 
   constructor(private builder: FormBuilder) { }
@@ -31,4 +32,7 @@ export class UserFormComponent implements OnInit {
     console.log(this.form.controls);
   }
 
+  hasUnsavedChanges(): boolean {
+    return this.form.dirty;
+  }
 }

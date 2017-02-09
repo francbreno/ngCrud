@@ -1,4 +1,5 @@
-# MoshPosts
+# ngCrud
+Implementação do projeto do curso "Angular 2- Tutorial for beginners" no Udemy 
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 

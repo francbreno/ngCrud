@@ -1,3 +1,4 @@
+import { AppApiService } from './app-api.service';
 import { PreventUnsavedChangesGuardService } from './prevent-unsaved-changes-guard.service';
 import { UsersService } from './users.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +34,7 @@ import { UserFormComponent } from './user-form/user-form.component';
   ],
   providers: [
     UsersService,
+    AppApiService,
     PreventUnsavedChangesGuardService
   ],
   bootstrap: [AppComponent]

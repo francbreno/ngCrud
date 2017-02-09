@@ -1,3 +1,4 @@
+import { PreventUnsavedChangesGuardService } from './prevent-unsaved-changes-guard.service';
 import { UsersService } from './users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -30,7 +31,10 @@ import { UserFormComponent } from './user-form/user-form.component';
     HttpModule,
     routes
   ],
-  providers: [UsersService],
+  providers: [
+    UsersService,
+    PreventUnsavedChangesGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

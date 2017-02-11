@@ -17,7 +17,10 @@ export class UserFormComponent implements OnInit, HasDirtyChecking {
     this.form = this.builder.group({
       user: new FormGroup({       
         name: new FormControl('', Validators.required),
-        email: new FormControl('', Validators.required),
+        email: new FormControl('', Validators.compose([
+          Validators.required, 
+          Validators.pattern(/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/)])
+        ),
         phone: new FormControl('')   
       }),
       address: new FormGroup({

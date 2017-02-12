@@ -1,3 +1,4 @@
+import { UsersService } from '../users.service';
 import { HasDirtyChecking } from '../prevent-unsaved-changes-guard.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,7 +12,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class UserFormComponent implements OnInit, HasDirtyChecking {
   form: FormGroup;
 
-  constructor(private builder: FormBuilder, private router: Router) { }
+  constructor(
+    private builder: FormBuilder, 
+    private router: Router,
+    private usersService: UsersService) { }
 
   ngOnInit() {
     this.form = this.builder.group({
@@ -35,8 +39,13 @@ export class UserFormComponent implements OnInit, HasDirtyChecking {
   addUser() {
     if (this.form.valid) {
       console.log(this.form.controls);
-      this.form.markAsPristine(true);
-      this.router.navigate(['users']);
+
+      this.usersService.addUser(this.form.value)
+        .subscribe(resp => {
+          console.log('user added', this.form.value);
+          this.form.markAsPristine(true);
+          this.router.navigate(['users']);
+        });
     }
   }
 
